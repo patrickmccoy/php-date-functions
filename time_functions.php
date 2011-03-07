@@ -1,6 +1,8 @@
 <?php
 
 /* set the default timezone for this script */
+/* see http://www.php.net/manual/en/timezones.php for a list of supported timezones */
+/* the timezone string in here must be valid for this to work */
 date_default_timezone_set("America/Denver");
 
 // returns string
@@ -93,7 +95,9 @@ function gmt_time() {
 }
 
 // return a formatted time string from GMT time, in the specified timezone
-function format_gmt_time($timestamp,$timezone='America/Denver') {
+function format_gmt_time($timestamp,$timezone='') {
+	
+	if (empty($timezone)) $timezone = date_default_timezone_get();
 
 	$timezone = new DateTimeZone($timezone);
 	$dateTime = new DateTime();
@@ -105,7 +109,9 @@ function format_gmt_time($timestamp,$timezone='America/Denver') {
 }
 
 // return a mm/dd/yyyy formatted GMT timestamp, in the specified timezone
-function format_gmt_date($timestamp, $timezone='America/Denver') {
+function format_gmt_date($timestamp, $timezone='') {
+
+	if (empty($timezone)) $timezone = date_default_timezone_get();
 
 	$timezone = new DateTimeZone($timezone);
 	$dateTime = new DateTime();
