@@ -1,9 +1,14 @@
 <?php
 
+/* set the default timezone for this script */
+date_default_timezone_set("America/Denver");
 
 // returns string
 // this function returns the time difference between two times in words, Facebook style
-function time_ago($date,$timezone='America/Denver') {
+function time_ago($date,$timezone='') {
+
+	if (empty($timezone)) $timezone = date_default_timezone_get();
+	
 	if(empty($date)) {
 		return "No date provided";
 	}
@@ -12,7 +17,7 @@ function time_ago($date,$timezone='America/Denver') {
 	$lengths         = array("60","60","24","7");
 	
 	$now             = time();
-	$unix_date       = $date;
+	$unix_date       = is_int($date) ? $date : strtotime($date);
 	
 	// check validity of date
 	if(empty($unix_date)) {    
@@ -110,7 +115,6 @@ function format_gmt_date($timestamp, $timezone='America/Denver') {
 	return $dateTime->format('m/j/Y');
 
 }
-
 
 
 ?>
