@@ -1,0 +1,4 @@
+These are a bunch of functions that deal with printing out dates/times from PHP.
+
+They all use the PHP DateTime class to print out the date/time in the passed timezone.
+
