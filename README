@@ -2,3 +2,31 @@ These are a bunch of functions that deal with printing out dates/times from PHP.
 
 All functions use the PHP DateTime class to print out the date/time in the passed timezone, or in the default timezone set by the user
 
+Example output from the time_ago() function: 
+
++1 year: March 10, 2012 at 12:03pm
++1 month: April 10 at 12:03pm
++1 week: March 17 at 12:03pm
++4 days: Monday at 12:03pm
++3 hours: 3 hours from now
++2 minutes: 2 minutes from now
++20 seconds: 20 seconds from now
+-1 year: March 10, 2010 at 12:03pm
+-1 month: February 10 at 12:03pm
+-1 week: March 3 at 12:03pm
+-4 days: Sunday at 12:03pm
+-3 hours: 3 hours ago
+-2 minutes: 2 minutes ago
+-20 seconds: 20 seconds ago
+
+> time_ago(string/int $date [, string $timezone])
+
+$date can either be a string (such as "+1 day") or a unix timestamp.
+
+$timezone must be a string which is a valid timezone from this list: http://www.php.net/manual/en/timezones.php
+The default timezone can be set before the function is called using 
+
+> date_default_timezone_set("America/Denver");
+
+The default timezone is set to "America/Denver" in time_functions.php to ensure that PHP doesn't complain.
+
