@@ -2,7 +2,9 @@ These are a bunch of functions that deal with printing out dates/times from PHP.
 
 All functions use the PHP DateTime class to print out the date/time in the passed timezone, or in the default timezone set by the user
 
-Example output from the time_ago() function: 
+Example output from the time_ago() function, called from the command line with the following command:
+
+> php -f test.php
 
 +1 year: March 10, 2012 at 12:03pm
 +1 month: April 10 at 12:03pm
