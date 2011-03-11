@@ -22,7 +22,7 @@ Example output from the time_ago() function, called from the command line with t
 -20 seconds: 20 seconds ago
 
 
-> time_ago(string/int $date [, string $timezone])
+> time_ago(string/int $date [, string $timezone]);
 
 $date can either be a string (such as "+1 day") or a unix timestamp.
 

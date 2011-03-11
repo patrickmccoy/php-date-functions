@@ -7,7 +7,7 @@ date_default_timezone_set("America/Denver");
 
 // returns string
 // this function returns the time difference between two times in words, Facebook style
-function time_ago($date,$timezone='') {
+function nice_time_format($date,$timezone='') {
 
 	if (empty($timezone)) { $timezone = date_default_timezone_get(); }
 	
@@ -84,6 +84,9 @@ function time_ago($date,$timezone='') {
 	
 	return $return;
 }
+
+// alias for nice_time_format()
+function time_ago($date,$timezone='') { return nice_time_format($date,$timezone); }
 
 
 // return current php timestamp in GMT
