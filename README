@@ -6,20 +6,21 @@ Example output from the time_ago() function, called from the command line with t
 
 > php -f test.php
 
-+1 year: March 10, 2012 at 12:03pm
-+1 month: April 10 at 12:03pm
-+1 week: March 17 at 12:03pm
-+4 days: Monday at 12:03pm
++1 year: March 11, 2012 at 1:08pm
++1 month: April 11, 2011 at 1:08pm
++1 week: March 18, 2011 at 1:08pm
++4 days: Next Tuesday at 1:08pm
 +3 hours: 3 hours from now
 +2 minutes: 2 minutes from now
 +20 seconds: 20 seconds from now
--1 year: March 10, 2010 at 12:03pm
--1 month: February 10 at 12:03pm
--1 week: March 3 at 12:03pm
--4 days: Sunday at 12:03pm
+-1 year: March 11, 2010 at 1:08pm
+-1 month: February 11 at 1:08pm
+-1 week: March 4 at 1:08pm
+-4 days: Monday at 1:08pm
 -3 hours: 3 hours ago
 -2 minutes: 2 minutes ago
 -20 seconds: 20 seconds ago
+
 
 > time_ago(string/int $date [, string $timezone])
 

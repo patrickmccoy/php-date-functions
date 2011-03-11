@@ -9,11 +9,9 @@ date_default_timezone_set("America/Denver");
 // this function returns the time difference between two times in words, Facebook style
 function time_ago($date,$timezone='') {
 
-	if (empty($timezone)) $timezone = date_default_timezone_get();
+	if (empty($timezone)) { $timezone = date_default_timezone_get(); }
 	
-	if(empty($date)) {
-		return "No date provided";
-	}
+	if(empty($date)) { return "No date provided"; }
 	
 	$periods         = array("second", "minute", "hour", "day");
 	$lengths         = array("60","60","24","7");
@@ -22,9 +20,7 @@ function time_ago($date,$timezone='') {
 	$unix_date       = is_int($date) ? $date : strtotime($date);
 	
 	// check validity of date
-	if(empty($unix_date)) {    
-		return "Bad date";
-	}
+	if(empty($unix_date)) { return "Bad date"; }
 	
 	// state the tense
 	// is it future date or past date
@@ -73,9 +69,10 @@ function time_ago($date,$timezone='') {
 			if ($tense == 'ago') $return = 'Yesterday';
 			else $return = 'Tomorrow';
 		} else if ($difference < 7) {
-			$return = $dateTime->format('l');
+			if ($tense != 'ago') { $return = 'Next '.$dateTime->format('l'); }
+			else { $return = $dateTime->format('l'); }
 		} else {
-			if ($dateTime->format('Y') === $nowDateTime->format('Y')) {
+			if (($dateTime->format('Y') === $nowDateTime->format('Y')) && ($tense == 'ago')) {
 				$return = $dateTime->format('F j');
 			} else {
 				$return = $dateTime->format('F j, Y');
