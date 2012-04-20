@@ -10,7 +10,7 @@ date_default_timezone_set('America/Denver');
 class DateUtil {
     // returns string
     // this function returns the time difference between two times in words, Facebook style
-    public static function nice_time_format($date, $timezone='') {
+    public static function niceTimeFormat($date, $timezone='') {
 
     	if (empty($timezone)) { $timezone = date_default_timezone_get(); }
 	
@@ -89,18 +89,18 @@ class DateUtil {
     }
 
     // alias for nice_time_format()
-    public static function time_ago($date, $timezone='') {
-        return self::nice_time_format($date,$timezone);
+    public static function timeAgo($date, $timezone='') {
+        return self::niceTimeFormat($date,$timezone);
     }
 
 
     // return current php timestamp in GMT
-    public static function gmt_time() {
+    public static function GMTTime() {
     	return gmmktime();
     }
 
     // return a formatted time string from GMT time, in the specified timezone
-    public static function format_gmt_time($timestamp, $timezone='') {
+    public static function formatGMTTime($timestamp, $timezone='') {
 	
     	if (empty($timezone)) $timezone = date_default_timezone_get();
 
@@ -114,7 +114,7 @@ class DateUtil {
     }
 
     // return a mm/dd/yyyy formatted GMT timestamp, in the specified timezone
-    public static function format_gmt_date($timestamp, $timezone='') {
+    public static function formatGMTDate($timestamp, $timezone='') {
 
     	if (empty($timezone)) $timezone = date_default_timezone_get();
 
