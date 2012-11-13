@@ -12,9 +12,13 @@ class DateUtil {
     // this function returns the time difference between two times in words, Facebook style
     public static function niceTimeFormat($date, $timezone='') {
 
-    	if (empty($timezone)) { $timezone = date_default_timezone_get(); }
+    	if (empty($timezone)) {
+            $timezone = date_default_timezone_get();
+        }
 	
-    	if(empty($date)) { return 'No date provided'; }
+    	if (empty($date)) {
+            return 'No date provided';
+        }
 	
     	$periods         = array('second', 'minute', 'hour', 'day');
     	$lengths         = array('60','60','24','7');
@@ -23,31 +27,32 @@ class DateUtil {
     	$unix_date       = is_int($date) ? $date : strtotime($date);
 	
     	// check validity of date
-    	if(empty($unix_date)) { return 'Bad date'; }
+    	if (empty($unix_date)) {
+            return 'Bad date';
+        }
 	
     	// state the tense
     	// is it future date or past date
-    	if($now > $unix_date) {    
+    	if ($now > $unix_date) {    
     		$difference     = $now - $unix_date;
     		$tense         = 'ago';
-	
     	} else {
     		$difference     = $unix_date - $now;
     		$tense         = 'from now';
     	}
 	
-    	for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+    	for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
     		$difference /= $lengths[$j];
     	}
 	
     	$difference = round($difference);
 	
-    	/* we never want to return 0 seconds, it looks funny */
+    	// we never want to return 0 seconds, it looks funny
     	if (($j == 0) && ($difference == 0)) {
     		$difference++;
     	}
 	
-    	if($difference != 1) {
+    	if ($difference != 1) {
     		$periods[$j].= 's';
     	}
 	
@@ -55,7 +60,7 @@ class DateUtil {
 	
     	$return = $difference .' '. $periods[$j] .' '. $tense;
 	
-    	/* If the return is days, we do some special processing */
+    	// If the return is days, we do some special processing
     	if ($j == 3) {
     		// set the timezone using DateTime
     		$timezone = new DateTimeZone($timezone);
@@ -69,11 +74,17 @@ class DateUtil {
 		
 		
     		if ($difference == 1) {
-    			if ($tense == 'ago') $return = 'Yesterday';
-    			else $return = 'Tomorrow';
+    			if ($tense == 'ago') {
+                    $return = 'Yesterday';
+    			} else {
+                    $return = 'Tomorrow';
+                }
     		} else if ($difference < 7) {
-    			if ($tense != 'ago') { $return = 'Next '.$dateTime->format('l'); }
-    			else { $return = $dateTime->format('l'); }
+    			if ($tense != 'ago') {
+                    $return = 'Next '.$dateTime->format('l');
+                } else { 
+                    $return = $dateTime->format('l');
+                }
     		} else {
     			if (($dateTime->format('Y') === $nowDateTime->format('Y')) && ($tense == 'ago')) {
     				$return = $dateTime->format('F j');
@@ -94,7 +105,7 @@ class DateUtil {
     }
 
 
-    // return current php timestamp in GMT
+    // return current unix timestamp in GMT
     public static function GMTTime() {
     	return gmmktime();
     }
@@ -102,7 +113,9 @@ class DateUtil {
     // return a formatted time string from GMT time, in the specified timezone
     public static function formatGMTTime($timestamp, $timezone='') {
 	
-    	if (empty($timezone)) $timezone = date_default_timezone_get();
+    	if (empty($timezone)) {
+            $timezone = date_default_timezone_get();
+        }
 
     	$timezone = new DateTimeZone($timezone);
     	$dateTime = new DateTime();
@@ -110,13 +123,14 @@ class DateUtil {
     	$dateTime->setTimezone($timezone);
 	
     	return $dateTime->format('m/j/Y h:i:s A');
-
     }
 
     // return a mm/dd/yyyy formatted GMT timestamp, in the specified timezone
     public static function formatGMTDate($timestamp, $timezone='') {
 
-    	if (empty($timezone)) $timezone = date_default_timezone_get();
+    	if (empty($timezone)) {
+            $timezone = date_default_timezone_get();
+        }
 
     	$timezone = new DateTimeZone($timezone);
     	$dateTime = new DateTime();
@@ -124,8 +138,6 @@ class DateUtil {
     	$dateTime->setTimezone($timezone);
 	
     	return $dateTime->format('m/j/Y');
-
     }
-
 
 }
