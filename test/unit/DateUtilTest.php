@@ -15,7 +15,7 @@ class DateUtilTest extends PHPUnit_Framework_TestCase {
      * Test the GMTTime method
      */
     public function test_GMTTime() {
-        $this->assertEquals(gmmktime(), DateUtil::GMTTime());
+        $this->assertEquals(time(), DateUtil::GMTTime());
     }
     
     /**

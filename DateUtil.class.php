@@ -107,7 +107,7 @@ class DateUtil {
 
     // return current unix timestamp in GMT
     public static function GMTTime() {
-    	return gmmktime();
+    	return time();
     }
 
     // return a formatted time string from GMT time, in the specified timezone
